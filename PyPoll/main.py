@@ -47,18 +47,18 @@ elif (vote2 > vote3):
 else:
      winner = name3       
 print('----------------------------')
-print('Winner: ' + winner)    
+print(f'Winner: {winner}')    
 print('----------------------------')
 
 with open(results_csv, 'w') as results:
     resultsvwriter = csv.writer(results, delimiter=',')
     resultsvwriter.writerow(['Election Results'])
     resultsvwriter.writerow(['----------------------------'])
-    resultsvwriter.writerow(['Total votes: {totalvotes}'])
+    resultsvwriter.writerow([f'Total votes: {totalvotes}'])
     resultsvwriter.writerow(['----------------------------'])
     resultsvwriter.writerow([f'{name1}: {round((vote1/totalvotes)*100,3)}% ({vote1})'])
-    resultsvwriter.writerow([f'{name2}: {round((vote1/totalvotes)*100,3)}% ({vote2})'])
-    resultsvwriter.writerow([f'{name3}: {round((vote1/totalvotes)*100,3)}% ({vote3})'])
+    resultsvwriter.writerow([f'{name2}: {round((vote2/totalvotes)*100,3)}% ({vote2})'])
+    resultsvwriter.writerow([f'{name3}: {round((vote3/totalvotes)*100,3)}% ({vote3})'])
     resultsvwriter.writerow(['----------------------------'])
     resultsvwriter.writerow([f'Winner: {winner}'])    
     resultsvwriter.writerow(['----------------------------'])
