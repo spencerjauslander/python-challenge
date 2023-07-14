@@ -2,36 +2,35 @@ import os
 import csv
 
 poll_csv = os.path.join('resources', 'election_data.csv')
-results_csv = os.path.join( "analysis", "testresults.txt")
-Candidateinfo =[]
+results_csv = os.path.join( "analysis", "testresults2.txt")
+Candidateinfo = {}
 totalvotes = 0
 
 def checkname(name):
-    for i in range(0,len(Candidateinfo)):
-        if name == Candidateinfo[i]:
-            Candidateinfo[i+1] += 1
+    for candidatename in Candidateinfo:
+        if name == candidatename:
+            Candidateinfo[name] += 1
             return      
-    Candidateinfo.append(name)
-    Candidateinfo.append(1)
+    Candidateinfo[name] = 1
 
 def printcandidates():
-    for i in range(0,len(Candidateinfo),2):
-        print(f'{Candidateinfo[i]}: {round((Candidateinfo[i+1]/totalvotes)*100,3)}% ({Candidateinfo[i+1]})')
+    for i in Candidateinfo:
+        print(f'{i}: {round((Candidateinfo[i]/totalvotes)*100,3)}% ({Candidateinfo[i]})')
 
 def findwinner():
     global winner
     global winnername
     winner = 0
     winnername = ""
-    for i in range(1,len(Candidateinfo),2):
+    for i in Candidateinfo:
         if Candidateinfo[i] > winner:
             winner = Candidateinfo[i]
-            winnername = Candidateinfo[i-1]
+            winnername = i
     return(winnername)      
 
 def writecandidate():
-    for i in range(0,len(Candidateinfo),2):
-        resultsvwriter.writerow([f'{Candidateinfo[i]}: {round((Candidateinfo[i+1]/totalvotes)*100,3)}% ({Candidateinfo[i+1]})'])
+    for i in Candidateinfo:
+        resultsvwriter.writerow([f'{i}: {round((Candidateinfo[i]/totalvotes)*100,3)}% ({Candidateinfo[i]})'])
 
 print('Election Results')
 print('----------------------------')
@@ -48,7 +47,7 @@ with open(poll_csv, 'r', encoding='UTF-8') as election2:
     # skips the header of csv file
     next(electionreader2)
     for vote in electionreader2:
-        checkname(vote[2])
+        checkname(str(vote[2]))
 
 print(f'Total votes: {totalvotes}')
 print('----------------------------')
