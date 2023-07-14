@@ -47,7 +47,7 @@ with open(poll_csv, 'r', encoding='UTF-8') as election2:
     # skips the header of csv file
     next(electionreader2)
     for vote in electionreader2:
-        checkname(str(vote[2]))
+        checkname(vote[2])
 
 print(f'Total votes: {totalvotes}')
 print('----------------------------')
