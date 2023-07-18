@@ -14,8 +14,6 @@ prerow = 0
 
 with open(budget_csv, 'r', encoding='UTF-8') as budget:
     budgetreader = csv.reader(budget, delimiter= ",")
-    # https://stackoverflow.com/questions/3392397/python-how-do-i-always-start-from-the-second-row-in-csv code credit
-    # skips the header of csv file
     next(budgetreader)
     for row in budgetreader:
         #counting each month
@@ -43,7 +41,7 @@ with open(budget_csv, 'r', encoding='UTF-8') as budget:
     #aftering exiting the loop, calcuate the average change with the final totals
     Average_Change = round(Sum_Change / (Total_Months-1), 2)
 with open(results_csv, 'w') as results:
-    #printing results in gitbash
+    #printing results in terminal
     print('Financial Analysis')
     print('----------------------------')
     print('Total Months: ' +  str(Total_Months))
