@@ -14,7 +14,7 @@ prerow = 0
 
 with open(budget_csv, 'r', encoding='UTF-8') as budget:
     budgetreader = csv.reader(budget, delimiter= ",")
-    next(budgetreader)
+    storeheader = next(budgetreader)
     for row in budgetreader:
         #counting each month
         Total_Months += 1

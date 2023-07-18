@@ -23,7 +23,7 @@ totalvotes = 0
 #Also find the total amount of votes
 with open(poll_csv, 'r', encoding='UTF-8') as election2: 
     electionreader2 = csv.reader(election2, delimiter= ",")
-    next(electionreader2)
+    storeheader = next(electionreader2)
     for vote in electionreader2:
         checkname(vote[2])
         totalvotes += 1
