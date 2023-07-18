@@ -1,0 +1,25 @@
+# Python-Challenge
+PyBank
+  - analysis folder
+    - results.txt : text file of the results from main.py
+  - resources folder
+    - budget_data.csv : csv file that main.py reads from
+  - main.py file : reads the csv file and write a text file. reads each row in a for loop of the csv to track the following information | a running total of the months, running total of the profits/losses, a special check for the first month (if so store the row value for the change calculation), 
+    for the rest of the months calculate the change by taking the current profit/loss and subtracting it from last months profit/loss and add that change to a running total, if change variable is the greatest increase so far retrieve the date and set change as the max, 
+      same logic applies to greatest decrease so far, finally set the current row as the previous row for the next loop calculation, aftering exiting the loop, calcuate the average change with the final totals | after all the information is gathered, print to terminal and write the text folder.
+
+PyPoll
+    - analysis folder
+    - results.txt : text file of the results from main.py
+  - resources folder
+    - election_data.csv : csv file that main.py reads from
+  - main.py file **'FILE TO BE GRADED'** : reads the csv file and write a text file. reads each row in a for loop of the csv to track the following information | check the candidates name in each row of the csv through a function named checkname and also find the total amount of votes
+    Inside the function, it will check the name against the candidateinfo dictionary: 1.add vote to a recognized name then return back to the original for loop or 2.add a new name key and one vote to dictionary if there is no match. | 
+    After the loop, it will calcuate the winner candidate using the finalized candidate dictionary. With the gathered information, print to the terminal and write the text file. Information such as the percentage of total votes are calculated during the print/write. 
+    There is also a for loop in the print/write step to go through the dictionary to find each unique candidate and their respective vote.
+- alternativemain.py file **'PLEASE NOTE THAT THIS FILE IS NOT TO BE GRADED'** : same code as the main.py file but uses lists instead of a dictionary.  Only value is to for experimental purposes. The file is commented only for readability. 
+Code Source 
+with open(budget_csv, 'r', encoding='UTF-8') as budget:
+    budgetreader = csv.reader(budget, delimiter= ",")
+    storeheader = next(budgetreader)
+    graduation_functions_solutions = from 03-Python folder from bootcampspot
